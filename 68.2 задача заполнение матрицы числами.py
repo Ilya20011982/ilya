@@ -14,11 +14,12 @@ x = 1
 line = 0
 row = 0
 
-while matrix:
+while matrix[line][row] == 0:
     
     for row in range(rows - 1):
         matrix[line][row] = x
         x += 1
+    line +=1
 
     for line in range(lines - 1):
         matrix[line][rows - 1] = x
@@ -32,12 +33,13 @@ while matrix:
         matrix[-line - 1][row - row] = x
         x += 1
     
+    row += 1
     lines -= 1
     rows -= 1
-    
+    print('line', line, 'row', row)
 
 
 
 print('matrix')
 print_matrix(matrix)
-print('line', line, 'row', row)
+# print('line', line, 'row', row)
