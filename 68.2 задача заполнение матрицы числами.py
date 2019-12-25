@@ -13,7 +13,7 @@ matrix = [[0 for i in range(rows)] for j in range(lines)]
 x = 1
 line = 0
 row = 0
-i, j = 0, 0
+
 while matrix:
     
     for row in range(rows - 1):
