@@ -19,4 +19,4 @@ def printzz(myarray):
     ))
  
  
-printzz(zigzag(6))
+printzz(zigzag(7))

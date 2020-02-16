@@ -11,12 +11,7 @@ matrix = [[0 for i in range(rows)] for j in range(lines)]
 
 
 def dirs():
-    d = [
-        (0, 1),
-        (1, 0),
-        (0, -1),
-        (-1, 0)
-    ]
+    d = [(0, 1), (1, 0), (0, -1), (-1, 0)]
     i = 0
     while True:
         yield d[i % 4]
@@ -30,9 +25,7 @@ d = dirs()
 dir_ = next(d)
 while cnt <= n:
     matrix[x][y] = cnt
-    if x + dir_[0] >= lines or x + dir_[0] < 0 or \
-        y + dir_[1] >= rows or y + dir_[1] < 0 or \
-        matrix[x + dir_[0]][y + dir_[1]]:
+    if x + dir_[0] >= lines or x + dir_[0] < 0 or y + dir_[1] >= rows or y + dir_[1] < 0 or matrix[x + dir_[0]][y + dir_[1]]:
         dir_ = next(d)
     x += dir_[0]
     y += dir_[1]
