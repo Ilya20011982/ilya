@@ -13,8 +13,8 @@ matrix = [[0 for i in range(rows)] for j in range(lines)]
 x = 0
 for row in range(rows):
     if row % 2 != 0:
-        for line in range(lines):
-            matrix[-line - 1][row] = x + 1
+        for line in reversed(range(lines)):
+            matrix[line][row] = x + 1
             x += 1
     else:
         for line in range(lines):
