@@ -12,16 +12,18 @@ cnt = 1
 while True:
     r = requests.get(url)
     print(r.text[0:2])
-    if r.text[0:2] == 'We':
+    if r.text.startswith('We'):
         print(r.url)
-        with open(r.url, encoding='utf-8') as f:
-            text = f.splitlines()
-         with open('out.txt', 'w', encoding='utf-8') as inf:  # почему то ошибка при запросе r.url : Traceback (most recent call last):
-                                                              #   File "1.py", line 10, in <module>
-                                                              #     with open(r.url, encoding='utf-8') as f:
-                                                              # OSError: [Errno 22] Invalid argument: 'https://stepic.org/media/
-                                                              # attachments/course67/3.6.3/843785.txt'
-            inf.write(''. join(text))
+        with open('out.txt', 'w', encoding='utf-8') as inf:
+            # почему то ошибка при запросе r.url : Traceback (most recent call last):
+            #   File "1.py", line 10, in <module>
+            #     with open(r.url, encoding='utf-8') as f:
+            # OSError: [Errno 22] Invalid argument: 'https://stepic.org/media/
+            # attachments/course67/3.6.3/843785.txt'
+
+            # Потому что функция open не открывает файлы из интернета.
+            # Все, что нужно, уже прочитано request'ом и лежит в r.text
+            inf.write(r.text)
         break
     else:
         url = 'https://stepic.org/media/attachments/course67/3.6.3/' + r.text
