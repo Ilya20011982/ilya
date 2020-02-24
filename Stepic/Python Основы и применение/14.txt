@@ -1,0 +1,10 @@
+9
+add global a
+create foo global
+add foo b
+create bar foo
+add bar a
+get foo a
+get foo c
+get bar a
+get bar b
