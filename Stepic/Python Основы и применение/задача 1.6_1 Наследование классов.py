@@ -32,32 +32,19 @@
 # Формат выходных данных
 # Для каждого запроса выведите в отдельной строке слово "Yes", если класс 1 является предком класса 2, и "No", если не является.
 
-d = {}
+parents = {}
+
 for i in range(int(input())):
-    i = input()
-    if len(i) < 2:
-        d[i[0]] = set(i[0])
-    elif i[0] in d:
-        for j in i[1:]:
-            if j not in ' :':
-               d[i[0]].add(j)
-    else:
-        d[i[0]] = set()
-        for j in i[1:]:
-            if j not in ' :':
-                d[i[0]].add(j)
-# for i in range(int(input())):
-#     i = input().split()
-#     # parent, heir = input().split()
-#     parent =  i[0]
-#     heir = [j for j in i[1:]]
-#     for i in heir:
-#         if i in d:
-#             if parent in d[i]:
-#                 print('Yes')
-#             else:
-#                 print('No')
-#         else:
-#             continue
-    # print(parent, heir)
-print(d)
+    name, *other = input().split()
+    if len(other) > 0:
+        other.pop(0)
+    parents[name] = other
+    print()
+for i in range(int(input())):
+    name, *other = input().split()
+    print(name, *other)
+    #     print('Yes')
+    # else:
+    #     print('No')
+print()
+print(parents)
