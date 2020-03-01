@@ -32,19 +32,32 @@
 # Формат выходных данных
 # Для каждого запроса выведите в отдельной строке слово "Yes", если класс 1 является предком класса 2, и "No", если не является.
 
+def is_linked(parent, child):
+    queue = [child]
+    while queue:
+        if parent in queue:
+            return True
+        new = queue.pop(0)
+        if new in parents:
+            for x in parents[new]:
+                queue.append(x)
+        else:
+            return False
+    return False
+
 parents = {}
 
 for i in range(int(input())):
-    name, *other = input().split()
-    if len(other) > 0:
-        other.pop(0)
-    parents[name] = other
-    print()
-for i in range(int(input())):
-    name, *other = input().split()
-    print(name, *other)
-    #     print('Yes')
-    # else:
-    #     print('No')
-print()
-print(parents)
+    child, *parent = input().split()
+    if len(parent) > 0:
+        parent.pop(0)
+    parents[child] = set(parent)
+    
+for j in range(int(input())):
+    parent, child = input().split()
+    if is_linked(parent, child):
+        print('Yes')
+    else:
+        print('No')
+
+
