@@ -12,8 +12,8 @@
 # except <имя 2>:
 #    print("<имя 2>")
 # ...
-# Костя посмотрел на этот код и указал Антону на то, что некоторые исключения можно не ловить, так как ранее в коде будет пойман их предок. 
-# Но Антон не помнит какие исключения наследуются от каких. Помогите ему выйти из неловкого положения и напишите программу, которая будет 
+# Костя посмотрел на этот код и указал Антону на то, что некоторые исключения можно не ловить, так как ранее в коде будет пойман их предок.
+# Но Антон не помнит какие исключения наследуются от каких. Помогите ему выйти из неловкого положения и напишите программу, которая будет
 # определять обработку каких исключений можно удалить из кода.
 # Важное примечание:
 # В отличие от предыдущей задачи, типы исключений не созданы.
@@ -40,7 +40,7 @@
 # except FileNotFoundError:
 #    print("FileNotFoundError")
 
-# По условию этого теста, Костя посмотрел на этот код, и сказал Антону, что исключение FileNotFoundError можно не ловить, 
+# По условию этого теста, Костя посмотрел на этот код, и сказал Антону, что исключение FileNotFoundError можно не ловить,
 # ведь мы уже ловим OSError -- предок FileNotFoundError
 
 # Sample Input:
@@ -58,29 +58,32 @@
 # Sample Output:
 # FileNotFoundError
 
+import sys
+sys.stdin = open('212.txt')
+
+
 parents = {}
-my_exception = []
 out_exception = []
+
+
+def all_parents(exc):
+    res = parents[exc]
+    for p in res.copy():
+        res.update(all_parents(p))
+    return res
+
 
 for i in range(int(input())):
     child, *parent = input().split()
     if len(parent) > 0:
         parent.pop(0)
-    parents[child] = parent
+    parents[child] = set(parent)
 print(parents)
-    
+
+caught = set()
 for j in range(int(input())):
-    my_exception.append(input())
-print(my_exception)
-
-revers = [i for i in reversed(my_exception)]
-
-while revers:
-    revers.pop(0)
-    if parents[k]:
-        parent = parents[k]
-        if parent[0] in revers:
-            out_exception.append(k)
-
-for n in reversed(out_exception):
-    print(n)
+    exc = input()
+    if any(p in caught for p in all_parents(exc)):
+        print(exc)
+    else:
+        caught.add(exc)
