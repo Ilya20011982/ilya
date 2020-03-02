@@ -73,11 +73,14 @@ for j in range(int(input())):
     my_exception.append(input())
 print(my_exception)
 
-for k in reversed(my_exception):
-    parent = parents[k]
-    print(parent)
-    if parent in parents:
-        out_exception.append(k)
+revers = [i for i in reversed(my_exception)]
+
+while revers:
+    revers.pop(0)
+    if parents[k]:
+        parent = parents[k]
+        if parent[0] in revers:
+            out_exception.append(k)
 
 for n in reversed(out_exception):
-    print('n', n)
+    print(n)
