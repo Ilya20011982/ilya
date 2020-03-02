@@ -1,0 +1,11 @@
+5
+Exception
+ArithmeticError : Exception
+ZeroDivisionError : ArithmeticError Exception
+OSError : Exception
+FileNotFoundError : OSError
+4
+ZeroDivisionError
+OSError
+ArithmeticError
+FileNotFoundError
