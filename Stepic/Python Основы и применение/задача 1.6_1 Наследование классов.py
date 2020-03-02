@@ -45,6 +45,7 @@ def is_linked(parent, child):
             return False
     return False
 
+
 parents = {}
 
 for i in range(int(input())):
