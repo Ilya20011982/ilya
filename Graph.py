@@ -27,16 +27,5 @@ class Graph:
         return res
 
 
-# exceptions = Graph()
-# with open('Stepic/Python Основы и применение/212.txt') as f:
-#     for i in range(int(f.readline())):
-#         child, *parents = f.readline().split()
-#         exceptions.add_node(child)
-#         if len(parents) > 0:
-#             parents.pop(0)
-#         for parent in parents:
-#             exceptions.add_vertex(parent, child)
-
-
-# print(exceptions)
-# print(exceptions.all_children('ArithmeticError'))
+if __name__ == '__main__':
+    pass
