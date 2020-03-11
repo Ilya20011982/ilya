@@ -3,21 +3,20 @@ import Graph
 
 
 def my_catalog(arg):
+    catalog.add_node(arg)
     if not os.path.isdir(arg):
-        return catalog.add_node(arg)
+        return
     else:
-        catalog[arg] = set(os.listdir(arg))
-        for j in set(os.listdir(arg)):
+        for j in os.listdir(arg):
+            catalog.add_vertex(arg, j)
             my_catalog(j)
 
 
 catalog = Graph.Graph()
-tmp = os.listdir('C:/Users/кредит/Desktop/PYTHON')
+catalog.add_node(os.getcwd())
+my_catalog(os.getcwd())
 
-# for i in tmp:
-#     my_catalog(i)
-   
-print(catalog, tmp)
+print(catalog)
 
 
 
