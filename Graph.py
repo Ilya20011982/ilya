@@ -3,7 +3,11 @@ class Graph:
         self.data = {}
 
     def __repr__(self):
-        return 'Graph: ' + str(self.data)
+        for key, value in self.data.items():
+            print(key, end=' ')
+            for i in value:
+                print(' ' * (len(key) + 1), i)
+        # return 'Graph: ' + str(self.data)
 
     def add_node(self, value):
         self.data[value] = set()
