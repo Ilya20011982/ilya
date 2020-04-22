@@ -1,0 +1,1 @@
+[{"name": "beta", "parents": ["alpha", "gamma"]}, {"name": "gamma", "parents": ["alpha"]}, {"name": "alpha", "parents": []}, {"name": "delta", "parents":["gamma", "zeta"]}, {"name": "epsilon", "parents":["delta"]}, {"name": "zeta", "parents":[]}]
