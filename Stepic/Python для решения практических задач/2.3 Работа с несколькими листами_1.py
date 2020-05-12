@@ -7,6 +7,18 @@
 # продукты по убыванию калорийности. В случае, если продукты имеют одинаковую калорийность - упорядочите их по названию.
 # В качестве ответа необходимо сдать названия продуктов, по одному в строке.
 
-import xlrd, xlwt
-from statistics import mean, median
+import xlrd
 
+wb = xlrd.open_workbook('trekking1.xlsx')
+sheet = wb.sheet_by_index(0)
+products = {}
+i = 1
+while i < sheet.nrows:
+    if str(*sheet.row_values(i, 1, 2)) not in products:
+        products[str(*sheet.row_values(i, 1, 2))] = sheet.row_values(i, 0, 1)
+    else:
+        products[str(*sheet.row_values(i, 1, 2))] += (sheet.row_values(i, 0, 1))
+    i += 1
+for k in sorted(products, reverse=True):
+    for v in sorted(products[k]):
+        print(v)
